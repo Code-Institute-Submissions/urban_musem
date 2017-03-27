@@ -14,16 +14,26 @@
             <div class="container">
              <div class="masthead">
                <ul class="nav nav-pills pull-right">
-                    <li><a href=" #"><i class="fa fa-home"></i> Home </a></li>
-                    <li><a href="#"><i class="fa fa-cube"></i> Login </a></li>
+                    <li><a href=" {% url 'home' %}"><i class="fa fa-home"></i> Home </a></li>
+                    <li><a href="{% url 'log_in' %}?next={% url 'profile' %}"><i class="fa fa-cube"></i> Login </a></li>
                     <li><a href="#"><i class="fa fa-cube"></i> Register </a></li>
+                   <li><a href="{% url 'profile' %}"><i class="fa fa-cube"></i> Profile </a></li>
+                   <li><a href="{% url 'log_out' %}"><i class="fa fa-cube"></i> Log out </a></li>
                 </ul>
                <h1><span class="fui-settings-16 muted"> <a href="#">Urban museum </a></span></h1>
            </div>
         </div>
         <hr>
     </div>
-
+        {% if messages %}
+            <div class="alert alert-success">
+                <div class="messages">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
         {% block content %}
         {% endblock %}
 
