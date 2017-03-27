@@ -15,12 +15,15 @@
              <div class="masthead">
                <ul class="nav nav-pills pull-right">
                     <li><a href=" {% url 'home' %}"><i class="fa fa-home"></i> Home </a></li>
-                    <li><a href="{% url 'log_in' %}?next={% url 'profile' %}"><i class="fa fa-cube"></i> Login </a></li>
-                    <li><a href="#"><i class="fa fa-cube"></i> Register </a></li>
+                   {% if user.is_authenticated %}
                    <li><a href="{% url 'profile' %}"><i class="fa fa-cube"></i> Profile </a></li>
                    <li><a href="{% url 'log_out' %}"><i class="fa fa-cube"></i> Log out </a></li>
+                    {% else %}
+                    <li><a href="{% url 'log_in' %}?next={% url 'profile' %}"><i class="fa fa-cube"></i> Login </a></li>
+                    <li><a href="{% url 'register' %}"><i class="fa fa-cube"></i> Register </a></li>
+                   {% endif %}
                 </ul>
-               <h1><span class="fui-settings-16 muted"> <a href="#">Urban museum </a></span></h1>
+               <h1><span class="fui-settings-16 muted"> <a href="{% url 'home' %}">Urban museum </a></span></h1>
            </div>
         </div>
         <hr>
