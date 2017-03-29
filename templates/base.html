@@ -24,6 +24,13 @@
 
 		<!-- Modernizer Script for old Browsers -->
     <script src="{%  static 'brandi/js/modernizr-2.6.2.min.js' %}"></script>
+
+    <!-- Stripe -->
+		<!-- Twitter Bootstrap -->
+    <script src="{%  static 'brandi/js/bootstrap.min.js' %}"></script>
+        <!-- Main jQuery -->
+        <script src="{%  static 'brandi/js/jquery-1.11.1.min.js' %}"></script>
+    {% block head_js %}{% endblock %}
 </head>
 <body>
     <header class=" navbar" style="background-color: rgba(16, 22, 54, 0.2);" id="header" >
@@ -54,9 +61,12 @@
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav">
                         <li class="current"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="current"><a href="{% url 'donations' %}">Donations </a></li>
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'profile' %}">Profile</a></li>
                         <li><a href="{% url 'log_out' %}">Log out</a></li>
+                        <li><a href="{% url 'my_museums' %}"> My museums </a></li>
+                        <li><a href="{% url 'add_musuem' %}"> New museum </a></li>
                         {% else %}
                         <li><a href="{% url 'log_in' %}?next={% url 'profile' %}">Log in</a></li>
                         <li><a href="{% url 'register' %}">Register</a></li>
@@ -82,12 +92,10 @@
 
 		<!-- Essential jQuery Plugins
 		================================================== -->
-		<!-- Main jQuery -->
-        <script src="{%  static 'brandi/js/jquery-1.11.1.min.js' %}"></script>
+
 		<!-- Single Page Nav -->
         <script src="{%  static 'brandi/js/jquery.singlePageNav.min.js' %}"></script>
-		<!-- Twitter Bootstrap -->
-        <script src="{%  static 'brandi/js/bootstrap.min.js' %}"></script>
+
 		<!-- jquery.fancybox.pack -->
         <script src="{%  static 'brandi/js/jquery.fancybox.pack.js' %}"></script>
 		<!-- jquery.mixitup.min -->
@@ -176,7 +184,5 @@
 				});
 			});
 		</script>
-</body>
-</html>
 </body>
 </html>

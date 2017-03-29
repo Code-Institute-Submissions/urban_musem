@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> Title </th>
+                <th> City </th>
+                <th> Country </th>
+                <th> Date </th>
+                <th> Description </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for museum in museums %}
+            <tr>
+                <th> {{ museum.title }} </th>
+                <th> {{ museum.city }}</th>
+                <th> {{ museum.country }}</th>
+                <th> {{ museum.created_date }} </th>
+                <th> {{ museum.description }}</th>
+                <th><a href="{% url 'museum_detail' museum.id %}"> See museum</a></th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ </div>
+{% endblock %}

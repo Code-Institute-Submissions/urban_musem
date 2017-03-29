@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="containter">
+    <div class="col-md-7">
+        <h2> Museum {{ museum.title }} </h2>
+        <h4> City: {{ museum.city }} </h4>
+        <h4> Country: {{ museum.country }}</h4>
+        <h4> Date: {{ museum.created_date }} </h4>
+        <h4> Description: {{ museum.description }} </h4>
+
+    </div>
+    <div class="col-md-5">
+        <h2> <button type="submit" class="btn btn-info"><a href="{% url 'edit_museum' museum.id %}"> Edit Museum </a></button></h2>
+        <h2> <button type="submit" class="btn btn-info"><a href="{% url 'my_museums' %}"> Back to my museums </a></button></h2>
+        <h2> <button type="submit" class="btn btn-info"><a href="{% url 'remove_museum' museum.id %}"> Remove  museum </a></button></h2>
+    </div>
+</div>
+{% endblock %}

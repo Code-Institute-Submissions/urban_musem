@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="container">
+        <h2> New museum </h2>
+        <form method="POST">
+            {% load bootstrap_tags %}
+            {% csrf_token %}
+            {{ form | as_bootstrap }}
+            <button type="submit" class="btn btn-info"> Add </button>
+        </form>
+   </div>
+{% endblock %}
