@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="container">
+        <h2> Adding a piece </h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% load bootstrap_tags %}
+            {% csrf_token %}
+            {{ form | as_bootstrap }}
+            <button type="submit" class="btn btn-info"> Add </button>
+        </form>
+       <h2> <button type="submit" class="btn btn-info"><a href="{% url 'pieces_list' %}"> Back to pictures </a></button></h2>
+   </div>
+{% endblock %}

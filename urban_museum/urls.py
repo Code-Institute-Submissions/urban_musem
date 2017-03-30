@@ -19,6 +19,7 @@ from donations import urls as donations_urls
 from payments import urls as payments_urls
 from cart import urls as cart_urls
 from museums import urls as museums_urls
+from pieces import urls as pieces_urls
 from django.contrib import admin
 from home import views
 from django.views.static import serve
@@ -27,6 +28,7 @@ from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^support_us/', include(payments_urls)),
+    url(r'^pieces/', include(pieces_urls)),
     url(r'^accounts/', include(accounts_urls)),
     url(r'^donations/', include(donations_urls)),
     url(r'^museums/', include(museums_urls)),

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+ <div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> Title </th>
+                <th> Date </th>
+                <th> Description </th>
+                <th> Image </th>
+            </tr>
+            <h2> <button type="submit" class="btn btn-info"><a href="{% url 'add_piece' %}"> Add piece </a></button></h2>
+        </thead>
+        <tbody>
+            {% for piece in pieces %}
+            <tr>
+                <th> {{ piece.title }} </th>
+                <th> {{ piece.date }}</th>
+                <th> {{ piece.description }}</th>
+                <th> <img height="100" width="100" src="{{ MEDIA_URL }}{{ piece.image }}"> </th>
+                <th><a href="{% url 'piece_details' piece.id %}"> See details</a></th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ </div>
+{% endblock %}
