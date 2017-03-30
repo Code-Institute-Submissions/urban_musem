@@ -12,9 +12,10 @@ class Museum (models.Model):
     description = models.CharField(max_length=250)
     created_date = models.DateTimeField(auto_now_add= True)
     views = models.IntegerField(default=0)
+    author = models.ForeignKey('auth.User')
 
     def __unicode__(self):
-        return self.title
+        return self.title, self.author
 
     def __str__(self):
         return self.title, self.country, self.city

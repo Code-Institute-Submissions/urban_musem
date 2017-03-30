@@ -4,10 +4,11 @@ from forms import AddMuseumForm
 from pieces.models import Piece
 from pieces.forms import AddPieceForm
 
+
 # Create your views here.
 
 def my_museums(request):
-    museums = Museum.objects.all()
+    museums = Museum.objects.filter(author=request.user)
     return render(request, "my_museums.html", {'museums':museums})
 
 def museum_detail(request, id):
