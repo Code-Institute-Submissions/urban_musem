@@ -9,7 +9,7 @@
             {{ form | as_bootstrap }}
             <button type="submit" class="btn btn-info"> Edit </button>
         </form>
-       <h2> <button type="submit" class="btn btn-info"><a href="{% url 'pieces_list' %} "> Back to pieces </a></button></h2>
+       <h2> <button type="submit" class="btn btn-info"><a href="{% url 'pieces_details' piece_edited.id %} "> Back </a></button></h2>
 
    </div>
 {% endblock %}

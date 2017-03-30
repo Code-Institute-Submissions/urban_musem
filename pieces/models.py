@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+from museums.models import Museum
 from django.db import models
 from django.utils import timezone
 
@@ -10,6 +10,7 @@ class Piece(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     description = models.CharField(max_length=200)
     image = models.ImageField(upload_to="images", blank=True, null=True)
+    museum = models.ForeignKey(Museum)
 
     def __unicode__(self):
         return self.title
