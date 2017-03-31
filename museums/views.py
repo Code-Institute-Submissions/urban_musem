@@ -22,6 +22,7 @@ def add_museum(request):
         form = AddMuseumForm(request.POST)
         if form.is_valid():
             museum = form.save(commit=False)
+            museum.author = request.user
             museum.save()
             return redirect(museum_detail, museum.pk)
     else:

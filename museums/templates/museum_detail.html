@@ -1,42 +1,38 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 {% block content %}
-<div class="containter">
-    <div class="col-md-7">
-        <h2> Museum {{ museum.title }} </h2>
-        <h4> City: {{ museum.city }} </h4>
-        <h4> Country: {{ museum.country }}</h4>
-        <h4> Date: {{ museum.created_date }} </h4>
-        <h4> Description: {{ museum.description }} </h4>
-
+    <div class="container_main header_museum" style="background-image: url('{% static "images/dust.png"%}')">
+        <div class="col-md-7 ">
+            <h2 class="title"> {{ museum.title }} </h2>
+            <h4 class="subtitle contrast"> {{ museum.description }} </h4>
+        </div>
+        <div class="col-md-5 ">
+            <span class="text contrast"> {{ museum.city }} | </span>
+            <span class="text contrast"> {{ museum.country }} |</span>
+            <span class="text contrast"> {{ museum.created_date }} </span>
+            <hr>
+            <span> <button type="submit" class="btn btn-museum"><a class="contrast" href="{% url 'edit_museum' museum.id %}"> Edit Museum </a></button></span>
+            <span> <button type="submit" class="btn btn-museum"><a class="contrast" href="{% url 'my_museums' %}"> Back to my museums </a></button></span>
+            <span> <button type="submit" class="btn btn-museum"><a class="confirm-delete contrast" href="{% url 'remove_museum' museum.id %}"> Remove  museum </a></button></span>
+        </div>
     </div>
-    <div class="col-md-5">
-        <h2> <button type="submit" class="btn btn-info"><a href="{% url 'edit_museum' museum.id %}"> Edit Museum </a></button></h2>
-        <h2> <button type="submit" class="btn btn-info"><a href="{% url 'my_museums' %}"> Back to my museums </a></button></h2>
-        <h2> <button type="submit" class="btn btn-info"><a href="{% url 'remove_museum' museum.id %}"> Remove  museum </a></button></h2>
+    <div id="heading_gallery">
+        <h1 class="subtitle heading_centered" > Art pieces </h1>
+        <h2 id="add_piece_to_gallery"> <button type="submit" class="btn btn-info"><a href="{% url 'add_piece_to_museum' museum.id %}"> Add piece </a></button></h2>
     </div>
- <div class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th> Title </th>
-                <th> Date </th>
-                <th> Description </th>
-                <th> Image </th>
-            </tr>
-            <h2> <button type="submit" class="btn btn-info"><a href="{% url 'add_piece_to_museum' museum.id %}"> Add piece </a></button></h2>
-        </thead>
-        <tbody>
-            {% for piece in pieces %}
-            <tr>
-                <th> {{ piece.title }} </th>
-                <th> {{ piece.date }}</th>
-                <th> {{ piece.description }}</th>
-                <th> <img height="100" width="100" src="{{ MEDIA_URL }}{{ piece.image }}"> </th>
-                <th><a href="{% url 'pieces_details' piece.id %}"> See details</a></th>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
- </div>
-</div>
+    <div class="project-wrapper">
+        {% for piece in pieces %}
+            <div class="col-md-4 container_pieces_gallery">
+                <figure class="mix work-item piece_in_museum ">
+					<img src="{{ MEDIA_URL }}{{ piece.image }}" alt="">
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{% url 'pieces_details' piece.id %}"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>{{ piece.title }}</h4>
+						<p>{{ piece.date }}</p>
+                        <a href="{% url 'pieces_details' piece.id %}"> See details</a>
+					</figcaption>
+				</figure>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

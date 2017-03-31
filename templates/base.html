@@ -25,6 +25,29 @@
 		<!-- Modernizer Script for old Browsers -->
     <script src="{%  static 'brandi/js/modernizr-2.6.2.min.js' %}"></script>
 
+
+    <!-- Maps -->
+
+        <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map_container{
+          background-color: coral;
+          height: 300px;
+      }
+    </style>
+    <!-- Maps -->
+
+
     <!-- Stripe -->
 		<!-- Twitter Bootstrap -->
     <script src="{%  static 'brandi/js/bootstrap.min.js' %}"></script>
@@ -33,7 +56,7 @@
     {% block head_js %}{% endblock %}
 </head>
 <body>
-    <header class=" navbar" style="background-color: rgba(16, 22, 54, 0.2);" id="header" >
+    <header class=" navbar-fixed-top navbar" style="background-color: rgba(16, 22, 54, 0.2);" id="header" >
         <div class="container">
             <div class="navbar-header">
                 <!-- responsive nav button -->
@@ -60,13 +83,13 @@
                 	<!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav">
-                        <li class="current"><a href="{% url 'home' %}">Home</a></li>
-                        <li class="current"><a href="{% url 'donations' %}">Donations </a></li>
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                        <li><a href="{% url 'log_out' %}">Log out</a></li>
-                        <li><a href="{% url 'my_museums' %}"> My museums </a></li>
+                        <li class="current"><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'add_musuem' %}"> New museum </a></li>
+                        <li><a href="{% url 'my_museums' %}"> My museums </a></li>
+                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                        <li class="current"><a href="{% url 'donations' %}"> Support us </a></li>
+                        <li><a href="{% url 'log_out' %}">Log out</a></li>
                         {% else %}
                         <li><a href="{% url 'log_in' %}?next={% url 'profile' %}">Log in</a></li>
                         <li><a href="{% url 'register' %}">Register</a></li>
@@ -76,7 +99,6 @@
 				<!-- /main nav -->
             </div>
          </div>
-    </header>
         {% if messages %}
             <div class="alert alert-success">
                 <div class="messages">
@@ -86,9 +108,55 @@
                 </div>
             </div>
         {% endif %}
+    </header>
+
         {% block content %}
         {% endblock %}
 	<a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
+
+        <!-- maps-->
+        <script>
+          function initMap() {
+            var place = {lat: 53.338116, lng: -6.255752};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              center: place,
+              zoom: 15});
+            var marker = new google.maps.Marker({
+                position: place,
+                map: map
+            });
+       var infoWindow = new google.maps.InfoWindow({map: map});
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+        console.log(pos)
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyoxLo6W65s7TXZ-9Igd1-j16P_czQp0k
+        &callback=initMap" type="text/javascript"></script>
 
 		<!-- Essential jQuery Plugins
 		================================================== -->
@@ -109,12 +177,15 @@
 		<!-- Contact form validation -->
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
-		<!-- Google Map -->
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
 		<!-- jquery easing -->
         <script src="{%  static 'brandi/js/jquery.easing.min.js' %}"></script>
 		<!-- jquery easing -->
         <script src="{%  static 'brandi/js/wow.min.js' %}"></script>
+
+		<!-- Urban museum Javascript -->
+        <script src="{%  static 'js/urban_js.js' %}"></script>
+
 		<script>
 			var wow = new WOW ({
 				boxClass:     'wow',      // animated element css class (default is wow)

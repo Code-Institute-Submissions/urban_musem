@@ -12,28 +12,33 @@
 {% endblock %}
  
 {% block content %}
-    <div class="container">
-        <form role="form" method="post" id="payment-form" action="{% url 'support_us' donations.id %}">
-        <div id="credit-card-errors" style="display:none">
-          <div class="alert-message block-message error" id="stripe-error-message"></div>
+
+    <div class="container container_main">
+        <div class="col-md-5 left_container">
+            <div class="center_cont_left">
+                <h1 class="title"> Support us </h1>
+                <p class="subtitle">{{ user.username }}, we need you </p>
+            </div>
         </div>
+        <div class="col-md-7 right_containter" style="text-align: center">
+            <form role="form" method="post" id="payment-form" action="{% url 'support_us' donations.id %}">
+                <div id="credit-card-errors" style="display:none">
+                  <div class="alert-message block-message error" id="stripe-error-message"></div>
+                </div>
 
-        <legend>Buy It Now!</legend>
+                <div>
+                    <p> <span class="subtitle"> Thanks for the {{ donations.title }}</span></p>
+                </div>
 
-        <div>
-            <p><img height="100" width="100" src="{{ MEDIA_URL }}{{ donations.image }}"></p>
-            <p>{{ donations.name }}</p>
-            <p>{{ donations.description }}</p>
-            <p>{{ donations.price }}</p>
+                <hr>
+
+                {% csrf_token %}
+                {{ form|as_bootstrap }}
+                <div class="form-group">
+                  <input class="btn btn-info" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+                </div>
+                </form>
         </div>
-
-        <hr>
-
-        {% csrf_token %}
-        {{ form|as_bootstrap }}
-        <div class="form-group">
-          <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-        </div>
-        </form>
     </div>
+
 {% endblock %}

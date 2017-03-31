@@ -1,36 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
- <div class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th> Title </th>
-                <th> City </th>
-                <th> Country </th>
-                <th> Date </th>
-                <th> Description </th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for museum in museums %}
-            <tr>
-                <th> {{ museum.title }} </th>
-                <th> {{ museum.city }}</th>
-                <th> {{ museum.country }}</th>
-                <th> {{ museum.created_date }} </th>
-                <th> {{ museum.description }}</th>
-                <th><a href="{% url 'museum_detail' museum.id %}"> See museum</a></th>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+ <div class="container container_main">
+
+    <div id="heading_gallery">
+        <h1 class="title heading_centered" > My museums </h1>
+    </div>
+    <div class="project-wrapper">
+        {% for museum in museums %}
+            <div class="col-md-4 container_museums">
+                <figure class="mix work-item piece_in_museum ">
+					<p class="subtitle"> {{ museum.title }}</p>
+					<p class="subtitle"> {{ museum.city }}</p>
+					<p class="subtitle"> {{ museum.country }}</p>
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="{% url 'museum_detail' museum.id %}"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>{{ museum.title }}</h4>
+						<p>{{ museum.created_date }} </p>
+						<p>{{ museum.description }}</p>
+                        <a href="{% url 'museum_detail' museum.id %}"> See details</a>
+					</figcaption>
+				</figure>
+            </div>
+        {% endfor %}
+    </div>
  </div>
-
-
- {% block gallery %}
-
- {% endblock %}
-
-
 {% endblock %}

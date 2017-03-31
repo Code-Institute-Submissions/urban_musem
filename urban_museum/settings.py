@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cart',
     'museums',
     'pieces',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,23 @@ MEDIA_URL = '/media/'
 
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
+
+# AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+#         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+#         'Cache-Control': 'max-age=94608000',}
+#
+# AWS_STORAGE_BUCKET_NAME = 'urban-museum-23'
+# AWS_ACCESS_KEY_ID = 'AKIAIW65NA5DSEMDPG3Q'
+# AWS_SECRET_ACCESS_KEY = '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'
+#
+# AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+#
+# STATICFILES_LOCATION = 'static'
+# STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+# STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+#
+# MEDIAFILES_LOCATION = 'media'
+# MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+# DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+

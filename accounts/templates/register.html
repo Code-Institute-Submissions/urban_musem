@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <div class="container">
-        <form role="form" method="post" action="{% url 'register' %}">
-            <legend>Create a new account</legend>
-            {% csrf_token %}
-            {{ form | as_bootstrap }}
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Create account</button>
-            </div>
-        </form>
+    <div class="container container_main container_main_center">
+        <div class="col-md-6 center_container">
+            <form class="form_user" role="form" method="post" action="{% url 'register' %}">
+                <legend class="title"> New account</legend>
+                <p class="subtitle"> Welcome!</p>
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <div class="form-group">
+                    <h2> <button type="submit" class="btn btn-info"> Get started </button></h2>
+                </div>
+                </form>
+        </div>
     </div>
 {% endblock %}
