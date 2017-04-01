@@ -14,7 +14,7 @@
             <p class="text"> <strong> Password: </strong>  </p>
             <p class="text"> <strong> Number of museums: </strong> </p>
             <p class="text"> <strong> Rating </strong>  </p>
-            <h2> <button type="submit" class="btn btn-info"><a href="#"> Unsuscribe </a></button></h2>
+            <h2> <button type="submit" class="btn btn-info"><a class="confirm-delete" href="{% url 'remove_account' user.id %}"> Unsuscribe </a></button></h2>
         </div>
     </div>
 {% endblock %}

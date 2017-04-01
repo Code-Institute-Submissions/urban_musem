@@ -11,6 +11,8 @@
             <span class="text contrast"> {{ museum.country }} |</span>
             <span class="text contrast"> {{ museum.created_date }} </span>
             <hr>
+            <span class="text contrast"> {{ museum.views }} views </span>
+            <hr>
             {% if user.id == museum.author_id or user.is_superuser%}
             <span> <button type="submit" class="btn btn-museum"><a class="contrast" href="{% url 'edit_museum' museum.id %}"> Edit Museum </a></button></span>
             <span> <button type="submit" class="btn btn-museum"><a class="contrast" href="{% url 'my_museums' %}"> Back to my museums </a></button></span>

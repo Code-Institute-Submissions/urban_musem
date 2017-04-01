@@ -16,8 +16,13 @@ def my_museums(request):
 def museum_detail(request, id):
     museum = get_object_or_404(Museum, pk=id)
     pieces = Piece.objects.filter(museum=museum)
+    if request.user.id != museum.author_id:
+        museum.views += 1
+        museum.save()
     args = {'museum':museum, 'pieces':pieces}
     return render(request, "museum_detail.html", args)
+
+#            {% if user.id == museum.author_id or user.is_superuser%}
 
 
 def add_museum(request):

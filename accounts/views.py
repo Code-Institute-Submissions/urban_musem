@@ -1,10 +1,12 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from django.template.context_processors import csrf
+from django.contrib.auth.models import User
+
 
 
 # Create your views here.
@@ -62,4 +64,6 @@ def register(request):
     args.update(csrf(request))
     return render(request, 'register.html', args)
 
-
+def remove_account(request, id):
+    User.objects.get(id=id).delete()
+    return redirect(reverse('home'))
