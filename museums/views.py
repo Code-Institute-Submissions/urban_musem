@@ -3,6 +3,8 @@ from museums.models import Museum
 from forms import AddMuseumForm
 from pieces.models import Piece
 from pieces.forms import AddPieceForm
+from django.contrib.auth.models import User
+
 
 
 # Create your views here.
@@ -16,6 +18,7 @@ def museum_detail(request, id):
     pieces = Piece.objects.filter(museum=museum)
     args = {'museum':museum, 'pieces':pieces}
     return render(request, "museum_detail.html", args)
+
 
 def add_museum(request):
     if request.method == 'POST':

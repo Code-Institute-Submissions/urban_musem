@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from museums.models import Museum
 from django.contrib.auth.models import User
 # Search
@@ -60,3 +60,11 @@ def most_viewed(request):
     most_viewed = Museum.objects.all().order_by('views')
     most_viewed_limited = paginator(request, most_viewed, 2)
     return render(request, 'most_viewed.html', {'most_viewed': most_viewed_limited})
+
+
+def museum_user(request, id):
+    user = get_object_or_404(User, pk=id)
+    user_museums = Museum.objects.filter(author=user)
+    args = {'user':user, 'user_museums':user_museums}
+    return render(request, "user_museum.html", args)
+

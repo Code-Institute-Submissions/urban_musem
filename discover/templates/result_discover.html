@@ -17,6 +17,8 @@
         {% for username in results_username  %}
             <p> Users </p>
             {{ username.username }}
+            {{ username.id }}
+            <a href="{% url 'museum_user' username.id %}"> See details</a>
         {% endfor %}
     </div>
  </div>
