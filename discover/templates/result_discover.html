@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <div class="container container_main">
+
+    <div id="heading_gallery">
+        <h1 class="title heading_centered" > Result </h1>
+    </div>
+    <div>
+        {% for place in results_place %}
+            <p> Museums </p>
+            {{ place.title }}
+            <a href="{% url 'museum_detail' place.id %}"> See details</a>
+        {% endfor %}
+    </div>
+    <div>
+        {% for username in results_username  %}
+            <p> Users </p>
+            {{ username.username }}
+        {% endfor %}
+    </div>
+ </div>
+{% endblock %}

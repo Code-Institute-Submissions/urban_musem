@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+
+{% block content %}
+
+<div class="container container_main">
+
+    <div id="heading_gallery">
+        <h1 class="title heading_centered" > Discover </h1>
+        <p class="subtitle"> Most popular </p>
+    </div>
+    {% for popular in most_viewed %}
+        {{ popular.title }}
+    {% endfor %}
+    {% if most_viewed.number == 1 and most_viewed.paginator.num_pages == 1 %}
+
+        {% else %}
+            <div class="pagination">
+                <span class="step-links">
+
+                    {% if most_viewed.has_previous %}
+                        <a href="?page={{ most_viewed.previous_page_number }}" class="glyphicon glyphicon-chevron-left"> Prev </a>
+                    {% endif %}
+
+
+
+                    {% if most_viewed.has_next %}
+                        <a href="?page={{ most_viewed.next_page_number }}" class="glyphicon glyphicon-chevron-right"> Next </a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+</div>
+
+{%  endblock %}

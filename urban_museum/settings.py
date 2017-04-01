@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'museums',
     'pieces',
     'storages',
+    'discover',
 ]
 
 MIDDLEWARE = [

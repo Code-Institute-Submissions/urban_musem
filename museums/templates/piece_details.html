@@ -8,13 +8,11 @@
         <img src="{{ MEDIA_URL }}{{ piece.image }}" width="500" height="500" alt="">
 
     </div>
-        <div class="col-md-5">
-               <div id="map_container">
-            <div id="map"></div>
-        </div>
+            {% if user.id == museum.author_id or user.is_superuser %}
         <h2> <button type="submit" class="btn btn-info"><a href="{% url 'edit_piece' piece.id %}"> Edit piece </a></button></h2>
         <h2> <button type="submit" class="btn btn-info"><a href="{% url 'museum_detail' museum.id %}"> Back to museum </a></button></h2>
         <h2> <button type="submit" class="btn btn-info"><a href="{% url 'remove_piece_from_museum' piece.id %}"> Remove  piece </a></button></h2>
+            {% endif %}
     </div>
 </div>
 {% endblock %}

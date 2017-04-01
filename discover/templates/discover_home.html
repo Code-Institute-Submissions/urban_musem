@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+
+{% block content %}
+ <div class="container container_main">
+
+    <div id="heading_gallery">
+        <h1 class="title heading_centered" > Discover </h1>
+        <p class="subtitle"> Discover by place </p>
+    </div>
+    <div>
+         <form class="form_user" role="form" method="post" action="{% url 'get_result' %}" >
+                {% csrf_token %}
+             <input type="text" class="form-control" name="searchy" placeholder="Search by place, user or museum...">
+             <div class="form-group">
+                 <h2> <button type="submit" class="btn btn-info"> Search <i class="fa fa-search"></i>  </button></h2>
+             </div>
+         </form>
+    </div>
+    <div>
+        <p class="subtitle"> Latest places </p>
+        {% for place in latest_places %}
+            {{ place.title }}
+        {% endfor %}
+        <a href="{% url 'latest_places' %}"> known more  </a>
+    </div>
+     <div>
+        <p class="subtitle"> Most popular </p>
+        {% for popular in most_viewed %}
+            {{ popular.title }}
+        {% endfor %}
+         <a href="{% url 'most_viewed' %}"> See more </a>
+     </div>
+ </div>
+{% endblock %}

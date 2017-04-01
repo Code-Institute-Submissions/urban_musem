@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+
+{% block content %}
+ <div class="container container_main">
+
+    <div id="heading_gallery">
+        <h1 class="title heading_centered" > Discover </h1>
+        <p class="subtitle"> Latest places </p>
+    </div>
+    <div>
+
+    <div>
+        {% for place in latest_places %}
+            {{ place.title }}
+        {% endfor %}
+
+        {% if latest_places.number == 1 and latest_places.paginator.num_pages == 1 %}
+
+        {% else %}
+            <div class="pagination">
+                <span class="step-links">
+
+                    {% if latest_places.has_previous %}
+                        <a href="?page={{ latest_places.previous_page_number }}" class="glyphicon glyphicon-chevron-left"> Prev </a>
+                    {% endif %}
+
+
+
+                    {% if latest_places.has_next %}
+                        <a href="?page={{ latest_places.next_page_number }}" class="glyphicon glyphicon-chevron-right"> Next </a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+ </div>
+ </div>
+{% endblock %}

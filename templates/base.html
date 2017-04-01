@@ -84,7 +84,7 @@
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav">
                         {% if user.is_authenticated %}
-                        <li class="current"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="current"><a href="{% url 'get_discover' %}">Discover</a></li>
                         <li><a href="{% url 'add_musuem' %}"> New museum </a></li>
                         <li><a href="{% url 'my_museums' %}"> My museums </a></li>
                         <li><a href="{% url 'profile' %}">Profile</a></li>
