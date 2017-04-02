@@ -9,191 +9,150 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!-- CSS
 		================================================== -->
-		<!-- Fontawesome Icon font -->
-    <link rel="stylesheet" href="{%  static 'brandi/css/font-awesome.min.css' %}">
-		<!-- Twitter Bootstrap css -->
-    <link rel="stylesheet" href="{%  static 'brandi/css/bootstrap.min.css' %}">
-		<!-- jquery.fancybox  -->
-    <link rel="stylesheet" href="{%  static 'brandi/css/jquery.fancybox.css' %}">
-		<!-- animate -->
-    <link rel="stylesheet" href="{%  static 'brandi/css/animate.css' %}">
-		<!-- Main Stylesheet -->
-    <link rel="stylesheet" href="{%  static 'brandi/css/main.css' %}">
-		<!-- media-queries -->
-    <link rel="stylesheet" href="{%  static 'brandi/css/media-queries.css' %}">
-
-    <link rel="stylesheet" href="{%  static 'css/style.css' %}">
-
-		<!-- Modernizer Script for old Browsers -->
-    <script src="{%  static 'brandi/js/modernizr-2.6.2.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static  'lucy-master/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static  'lucy-master/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static  'lucy-master/css/owl.carousel.css'%}">
+    <link rel="stylesheet" href="{% static  'lucy-master/css/owl.theme.css'%}">
+    <link rel="stylesheet" href="{% static  'lucy-master/css/nivo-lightbox/nivo-lightbox.css'%}">
+    <link rel="stylesheet" href="{% static  'lucy-master/css/nivo-lightbox/nivo-lightbox-theme.css'%}">
+    <link rel="stylesheet" href="{% static  'lucy-master/css/animate.css'%}">
+    <link rel="stylesheet" href="{% static  'lucy-master/css/style.css'%}">
+    <link rel="stylesheet" href="{% static  'css/style.css'%}">
 
 
-    <!-- Maps -->
+    <script src="{% static  'lucy-master/js/modernizr.custom.js'%}"></script>
 
-        <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map_container{
-          background-color: coral;
-          height: 300px;
-      }
-    </style>
-    <!-- Maps -->
-
-
-    <!-- Stripe -->
+    <!-- CSS
+		================================================== -->
 
     {% block head_js %}{% endblock %}
 </head>
+
+
+
 <body >
-    <div id="fondo_collapse_in" class=""></div>
-    <header class=" navbar-fixed-top navbar"  id="header" >
-        <div class="container">
-            <div class="navbar-header">
-                <!-- responsive nav button -->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <i class="fa fa-bars fa-2x"></i>
-                </button>
-                <!-- /responsive nav button -->
-                <!-- logo -->
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <h1 id="logo">
-                        <img src="{{ MEDIA_URL }}images/logo.png" width="300px" alt="">
-                    </h1>
-                </a>
-                <!-- /logo -->
-            </div>
-            <div id="dinamic_nav" class="collapse navbar-collapse navbar-right" role="navigation">
-    	    <!-- main nav -->
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <ul id="nav" class="nav navbar-nav">
-                        <li class="current"><a href="{% url 'home' %}">  </a></li>
-                    </ul>
-                </nav>
-				<!-- /main nav -->
-                	<!-- main nav -->
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <ul id="nav" class="nav navbar-nav">
-                        {% if user.is_authenticated %}
-                        <li class="current subtitle"><a href="{% url 'get_discover' %}">Discover</a></li>
-                        <li><a class="subtitle" href="{% url 'add_musuem' %}"> New museum </a></li>
-                        <li><a class="subtitle" href="{% url 'my_museums' %}"> My museums </a></li>
-                        <li><a class="subtitle" href="{% url 'profile' %}">Profile</a></li>
-                        <li class="subtitle" class="current"><a href="{% url 'donations' %}"> Support us </a></li>
-                        <li class="subtitle"><a href="{% url 'log_out' %}">Log out</a></li>
-                        {% else %}
-                        <li class="subtitle"><a href="{% url 'log_in' %}">Log in</a></li>
-                        <li class="subtitle"><a href="{% url 'register' %}">Register</a></li>
-                        {% endif %}
-                    </ul>
-                </nav>
-				<!-- /main nav -->
-            </div>
-         </div>
-        {% if messages %}
-            <div class="alert alert-success">
-                <div class="messages">
-                    {% for message in messages %}
-                        {{ message }}
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
-    </header>
+<header>
+
+{#    _________#}
+<div style="z-index: 100000000000000">
+    <div class="overlay overlay-hugeinc">
+        <button type="button" class="overlay-close">Close</button>
+        <nav>
+        <ul>
+            {% if user.is_authenticated %}
+            <li class="hideit"><a href="{% url 'get_discover' %}">Discover</a></li>
+            <li class="hideit"><a href="{% url 'add_musuem' %}">Add museum</a></li>
+            <li class="hideit"><a href="{% url 'my_museums' %}">My museums</a></li>
+            <li class="hideit"><a href="{% url 'donations' %}"> Support us </a></li>
+            <li class="hideit"><a href="{% url 'log_out' %}">Log out</a></li>
+            {% else %}
+            <li class="hideit"><a href="{% url 'log_in' %}">Log in</a></li>
+            <li class="hideit"><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+        </nav>
+    </div>
+        <section id="header" class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="navigation" id="navigation-scroll">
+                        <div class="row">
+                            <div class="col-md-11 col-xs-10">
+                                <a href="{% url 'home' %}">
+                                    <h1 id="logo clear">
+                                        <p id="logo_letters" class="text contrast clear"> <span>urban museum</span> </p>
+                                    </h1>
+                                </a>
+                                {% if messages %}
+                                    <div class="alert alert-success">
+                                        <div class="messages">
+                                         {% for message in messages %}
+                                            {{ message }}
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-1 col-xs-2">
+                                <p class="nav-button clear">
+                                    <button id="trigger-overlay" type="button">
+                                    <i class="fa fa-bars"></i>
+                                    </button>
+                                </p>
+                            </div>
+                        </div><!-- /.row -->
+                    </div><!-- /.navigation -->
+                </div><!--/.container-->
+            </div><!--/.top-bar-->
+        </section>
+</div>
+{#  ________  #}
+
+
+</header>
 
         {% block content %}
         {% endblock %}
-	<a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
-
-        <!-- maps-->
-        <script>
-          function initMap() {
-            var place = {lat: 53.338116, lng: -6.255752};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              center: place,
-              zoom: 15});
-            var marker = new google.maps.Marker({
-                position: place,
-                map: map
+    <script src="{% static  'lucy-master/js/jquery-1.11.2.min.js'%}"></script>
+    <script src="{% static  'lucy-master/js/wow.min.js'%}"></script>
+    <script src="{% static  'lucy-master/js/owl-carousel.js'%}"></script>
+    <script src="{% static  'lucy-master/js/nivo-lightbox.min.js'%}"></script>
+    <script src="{% static  'lucy-master/js/smoothscroll.js'%}"></script>
+    <!--<script src="js/jquery.ajaxchimp.min.js"></script>-->
+    <script src="{% static  'lucy-master/js/bootstrap.min.js'%}"></script>
+    <script src="{% static  'lucy-master/js/classie.js'%}"></script>
+    <script src="{% static  'lucy-master/js/script.js'%}"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script>
+        $(document).ready(function(){
+            $(".hideit").click(function(){
+                $(".overlay").hide();
             });
-       var infoWindow = new google.maps.InfoWindow({map: map});
+            $("#trigger-overlay").click(function(){
+                $(".overlay").show();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
 
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
+          var kawa = $('.top-bar');
+          var back = $('#back-to-top');
+          function scroll() {
+             if ($(window).scrollTop() > 700) {
+                kawa.addClass('fixed');
+                back.addClass('show-top');
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
+             } else {
+                kawa.removeClass('fixed');
+                back.removeClass('show-top');
+             }
+          }
+
+          document.onscroll = scroll;
+        });
+    </script>
+    <!--HHHHHHHHHHHH        Smooth Scrooling     HHHHHHHHHHHHHHHH-->
+    <script>
+        $(function() {
+          $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+              if (target.length) {
+                $('html,body').animate({
+                  scrollTop: target.offset().top
+                }, 1000);
+                return false;
+              }
+            }
           });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-        console.log(pos)
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-      }
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyoxLo6W65s7TXZ-9Igd1-j16P_czQp0k
-        &callback=initMap" type="text/javascript"></script>
-               <script src="{%  static 'brandi/js/jquery-1.11.1.min.js' %}"></script>
-		<!-- Single Page Nav -->
-        <script src="{%  static 'brandi/js/jquery.singlePageNav.min.js' %}"></script>
-		<!-- Twitter Bootstrap -->
-        <script src="{%  static 'brandi/js/bootstrap.min.js' %}"></script>
-		<!-- jquery.fancybox.pack -->
-        <script src="{%  static 'brandi/js/jquery.fancybox.pack.js' %}"></script>
-		<!-- jquery.mixitup.min -->
-        <script src="{%  static 'brandi/js/jquery.mixitup.min.js' %}"></script>
-		<!-- jquery.parallax -->
-        <script src="{%  static 'brandi/js/jquery.parallax-1.1.3.js' %}"></script>
-		<!-- jquery.countTo -->
-        <script src="{%  static 'brandi/js/jquery-countTo.js' %}"></script>
-		<!-- jquery.appear -->
-        <script src="{%  static 'brandi/js/jquery.appear.js' %}"></script>
-
-		<!-- jquery easing -->
-        <script src="{%  static 'brandi/js/jquery.easing.min.js' %}"></script>
-		<!-- jquery easing -->
-        <script src="{%  static 'brandi/js/wow.min.js' %}"></script>
-
+        });
+    </script>
 		<!-- Urban museum Javascript -->
         <script src="{%  static 'js/urban_js.js' %}"></script>
-
-		<script>
-			var wow = new WOW ({
-				boxClass:     'wow',      // animated element css class (default is wow)
-				animateClass: 'animated', // animation css class (default is animated)
-				offset:       120,          // distance to the element when triggering the animation (default is 0)
-				mobile:       false,       // trigger animations on mobile devices (default is true)
-				live:         true        // act on asynchronously loaded content (default is true)
-			  }
-			);
-			wow.init();
-		</script>
-		<!-- Custom Functions -->
-        <script src="{%  static 'brandi/js/custom.js' %}"></script>
 
 </body>
 </html>

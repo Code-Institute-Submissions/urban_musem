@@ -18,7 +18,7 @@
         </div>
     </div>
     <div id="heading_gallery">
-        <h1 class="subtitle heading_centered" > Art pieces </h1>
+        <h1 class="subtitle heading_centered animation-box wow bounceIn animated " > Art pieces </h1>
         <hr>
         {% if user.id == museum.author_id or user.is_superuser %}
         <h2 id="add_piece_to_gallery"> <button type="submit" class="btn btn-info"><a href="{% url 'add_piece_to_museum' museum.id %}"> Add piece </a></button></h2>
@@ -26,16 +26,23 @@
     </div>
     <div class="project-wrapper">
         {% for piece in pieces %}
-            <div class="col-md-4 container_pieces_gallery">
-                <figure class="mix work-item piece_in_museum ">
-					<img src="{{ MEDIA_URL }}{{ piece.image }}" alt="">
-					<figcaption class="overlay">
-						<a class="fancybox" rel="works"  href="{% url 'pieces_details' piece.id %}"><i class="fa fa-eye fa-lg"></i></a>
-						<h4>{{ piece.title }}</h4>
-						<p>{{ piece.date }}</p>
-					</figcaption>
-				</figure>
+            <div id="team">
+                <div class="col-md-4 clear wow animated fadeInLeft ">
+                    <div class="piece_in_museum">
+                         <img src="{{ MEDIA_URL }}{{ piece.image }}" alt="">
+                    </div>
+                    <div id="hover_museum_detail" class="img-hover">
+                        <p class=" title museum wow animated fadeInLeft">{{ piece.title }} </p>
+                        <p class=" subtitle clear wow animated fadeInLeft">{{ piece.date }} </p>
+                        <p class=" subtitle clear wow animated fadeInLeft">{{ piece.description }} </p>
+                        <a href="{% url 'pieces_details' piece.id %}"> See piece </a>
+                    </div>
+                </div>
             </div>
         {% endfor %}
     </div>
+
+
+
+
 {% endblock %}

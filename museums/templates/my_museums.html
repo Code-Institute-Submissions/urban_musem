@@ -4,26 +4,27 @@
  <div class="container container_main">
 
     <div id="heading_gallery">
-        <h1 class="title heading_centered" > My museums </h1>
+        <h1 class="title heading_centered animation-box wow bounceIn animated" > My museums </h1>
     </div>
     <div class="project-wrapper">
         {% for museum in museums %}
-            <div class="col-md-4 ">
-                <figure class="mix work-item piece_in_museum container_museums ">
-					<div class="container_info_museum">
+        <div  id="team">
+            <div class="col-md-4 clear wow animated fadeInLeft piece_in_museum container_museums">
+                <div class="container_info_museum">
                     <p class="title museum"> {{ museum.title }}</p>
-                        <hr>
-					<p class="subtitle clear"> {{ museum.city }}</p>
-                        <br>
-					<p class="subtitle"> {{ museum.country }}</p>
-                    </div>
-					<figcaption class="overlay">
-						<a class="fancybox" rel="works"  href="{% url 'museum_detail' museum.id %}"><i class="fa fa-eye fa-lg"></i></a>
-						<p>{{ museum.created_date }} </p>
-						<p>{{ museum.description }}</p>
-					</figcaption>
-				</figure>
+                    <hr>
+                    <p class="subtitle clear"> {{ museum.city }}</p>
+                    <br>
+                    <p class="subtitle"> {{ museum.country }}</p>
+                </div>
+                <div class="img-hover">
+                    <p class=" text wow animated fadeInLeft">{{ museum.created_date }} </p>
+                    <p class=" text wow animated fadeInLeft">{{ museum.description }} </p>
+                    <a href="{% url 'museum_detail' museum.id %}"> Ver museo </a>
+
+                </div>
             </div>
+        </div>
         {% endfor %}
     </div>
  </div>
