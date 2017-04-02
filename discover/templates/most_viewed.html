@@ -2,34 +2,38 @@
 {% load bootstrap_tags %}
 
 {% block content %}
-
-<div class="container container_main">
-
-    <div id="heading_gallery">
-        <h1 class="title heading_centered" > Discover </h1>
-        <p class="subtitle"> Most popular </p>
-    </div>
-    {% for popular in most_viewed %}
-        {{ popular.title }}
-    {% endfor %}
-    {% if most_viewed.number == 1 and most_viewed.paginator.num_pages == 1 %}
+    <div class="container container_main">
+        <div class="col-md-5 left_container">
+            <div class="center_cont_left">
+                <h1 class="title"> Most viewed </h1>
+                <p class="subtitle"> Popular museums </p>
+            </div>
+        </div>
+        <div class="col-md-7 right_containter">
+            <a href="{% url 'get_discover' %}"><button type="submit" class="btn_icon btn_red btn_red_white button_top_right"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </button></a>
+                {% for popular in most_viewed %}
+                <div class="col-md-10 latest_places ">
+                 <p class="text clear "><span class="subtitle ">{{ popular.city }}</span> ,{{ popular.country }} | {{ popular.title }}
+                     <span class="redsmall">{{ popular.views }} Views </span> <br> {{ popular.description }} <a href="{% url 'museum_detail' popular.id %}"><i class="red fa fa-plus" aria-hidden="true"></i> </a></p>
+                </div>
+            {% endfor %}
+        {% if most_viewed.number == 1 and most_viewed.paginator.num_pages == 1 %}
 
         {% else %}
             <div class="pagination">
                 <span class="step-links">
 
                     {% if most_viewed.has_previous %}
-                        <a href="?page={{ most_viewed.previous_page_number }}" class="glyphicon glyphicon-chevron-left"> Prev </a>
+                        <a href="?page={{ most_viewed.previous_page_number }}" > <i class="red fa fa-chevron-left" aria-hidden="true"></i> </a>
                     {% endif %}
 
 
 
                     {% if most_viewed.has_next %}
-                        <a href="?page={{ most_viewed.next_page_number }}" class="glyphicon glyphicon-chevron-right"> Next </a>
+                        <a href="?page={{ most_viewed.next_page_number }}" > <i class="red fa fa-chevron-right" aria-hidden="true"></i> </a>
                     {% endif %}
                 </span>
             </div>
         {% endif %}
-</div>
-
+        </div>
 {%  endblock %}

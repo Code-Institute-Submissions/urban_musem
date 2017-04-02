@@ -8,22 +8,60 @@
                 <p class="subtitle">That's what we've found, {{ user.username }}!</p>
             </div>
         </div>
-        <div class="col-md-7 latest">
+        <div class="col-md-7 results">
+            <button onclick="javascript:history.back()" type="submit" class="btn_icon btn_red btn_red_white button_top_right"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </button>
             <div class="search_results_container">
                 {% for place in results_place %}
-                    <p class="subtitle"> Museums </p>
                     <hr>
+                    <p class="subtitle"> Museum </p>
                     <p class="text"> {{ place.title }}</p>
-                    <a href="{% url 'museum_detail' place.id %}"> See details</a>
+                    <a href="{% url 'museum_detail' place.id %}"> <i class="red fa fa-plus" aria-hidden="true"></i></a>
                 {% endfor %}
+         {% if place.number == 1 and place.paginator.num_pages == 1 %}
+
+        {% else %}
+            <div class="pagination">
+                <span class="step-links">
+
+                    {% if place.has_previous %}
+                        <a href="?page={{ place.previous_page_number }}" > <i class="red fa fa-chevron-left" aria-hidden="true"></i> </a>
+                    {% endif %}
+
+
+
+                    {% if place.has_next %}
+                        <a href="?page={{ place.next_page_number }}" > <i class="red fa fa-chevron-right" aria-hidden="true"></i> </a>
+                    {% endif %}
+                </span>
+            </div>
+         {% endif %}
+
             </div>
             <div>
                 {% for username in results_username  %}
-                    <p class="subtitle"> Users </p>
                     <hr>
+                    <p class="subtitle"> User </p>
                     <p class="text">{{ username.username }}</p>
-                    <a href="{% url 'museum_user' username.id %}"> See details</a>
+                    <a href="{% url 'museum_user' username.id %}">  <i class="red fa fa-plus" aria-hidden="true"></i> </a>
                 {% endfor %}
+          {% if username.number == 1 and username.paginator.num_pages == 1 %}
+
+        {% else %}
+            <div class="pagination">
+                <span class="step-links">
+
+                    {% if username.has_previous %}
+                        <a href="?page={{ username.previous_page_number }}" > <i class="red fa fa-chevron-left" aria-hidden="true"></i> </a>
+                    {% endif %}
+
+
+
+                    {% if most_viewed.has_next %}
+                        <a href="?page={{ username.next_page_number }}" > <i class="red fa fa-chevron-right" aria-hidden="true"></i> </a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
             </div>
         </div>
     </div>

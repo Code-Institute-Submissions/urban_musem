@@ -13,9 +13,9 @@
                 {% load bootstrap_tags %}
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
-                <button type="submit" class="btn btn-info"> Edit </button>
+                <button type="submit" class="btn_icon btn_red btn_red_white"> <i class="fa fa-pencil" aria-hidden="true"></i> </button>
             </form>
-           <h2> <button type="submit" class="btn btn-info button_top_right"><a href="{% url 'pieces_details' piece_edited.id %} "> Back </a></button></h2>
+           <h2 class="container_center_icons"> <a href="{% url 'pieces_details' piece_edited.id %} "><button type="submit" class="btn_icon btn_red button_top_right btn_red_white"> <i class="fa fa-arrow-left" aria-hidden="true"></i>  </button></a></h2>
         </div>
     </div>
 {% endblock %}

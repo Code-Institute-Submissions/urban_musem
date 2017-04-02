@@ -10,18 +10,21 @@
             <span class="text contrast"> {{ museum.city }} | </span>
             <span class="text contrast"> {{ museum.country }} |</span>
             <span class="text contrast"> {{ museum.created_date }} </span>
+            <br>
+            <div class="container_center_icons">
             {% if user.id == museum.author_id or user.is_superuser%}
-            <span> <button type="submit" class="btn btn-museum"><a class="contrast" href="{% url 'edit_museum' museum.id %}"> Edit Museum </a></button></span>
-            <span> <button type="submit" class="btn btn-museum"><a class="contrast" href="{% url 'my_museums' %}"> Back to my museums </a></button></span>
-            <span> <button type="submit" class="btn btn-museum"><a class="confirm-delete contrast" href="{% url 'remove_museum' museum.id %}"> Remove  museum </a></button></span>
+                <a class="contrast" href="{% url 'edit_museum' museum.id %}"> <button type="submit" class="btn_icon btn_red btn_red_white"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+                <a class="contrast" href="{% url 'my_museums' %}"> <button type="submit" class="btn_icon btn_red btn_red_white"> <i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+                <a class="confirm-delete contrast" href="{% url 'remove_museum' museum.id %}"><button type="submit" class="btn_icon btn_red btn_red_white"> <i class="fa fa-trash" aria-hidden="true"></i> </button></a>
             {% endif %}
+            </div>
         </div>
     </div>
     <div id="heading_gallery">
         <h1 class="subtitle heading_centered animation-box wow bounceIn animated " > Art pieces </h1>
         <hr>
         {% if user.id == museum.author_id or user.is_superuser %}
-        <h2 id="add_piece_to_gallery"> <button type="submit" class="btn btn-info"><a href="{% url 'add_piece_to_museum' museum.id %}"> Add piece </a></button></h2>
+         <a href="{% url 'add_piece_to_museum' museum.id %}"><button type="submit" class="btn_icon btn_red button_top_right btn_red_white"> <i class="fa fa-plus" aria-hidden="true"></i></button> </a>
         {% endif %}
     </div>
     <div class="project-wrapper">
@@ -39,6 +42,7 @@
                     </div>
                 </div>
             </div>
+
         {% endfor %}
     </div>
 

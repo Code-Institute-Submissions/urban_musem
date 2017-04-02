@@ -13,20 +13,20 @@
                 {% csrf_token %}
              <input type="text" class="form-control" name="searchy" placeholder="Search by place, user or museum...">
              <div class="form-group">
-                 <h2> <button type="submit" class="btn btn-info"> Search <i class="fa fa-search"></i>  </button></h2>
+                 <h2> <button type="submit" class="btn_text btn_red btn_red_white"> Search <i class="fa fa-search"></i>  </button></h2>
              </div>
              <hr>
          </form>
     </div>
     <div class="col-md-8 latest clear">
-        <p class="subtitle "> Latest places </p>
+        <p class="subtitle red"> Latest places </p>
         {% for place in latest_places %}
             <div class="col-md-10 latest_museums ">
-                <p class="text clear "><span class="subtitle ">{{ place.city }}</span> |{{ place.country }} | {{ place.title }} <a href="{% url 'museum_detail' place.id %}"> + </a></p>
+                <p class="text clear "><span class=" subtitle ">{{ place.city }}</span> |{{ place.country }} | {{ place.title }} <a href="{% url 'museum_detail' place.id %}"> <i class="red fa fa-plus" aria-hidden="true"></i> </a></p>
 
             </div>
         {% endfor %}
-        <button class="btn btn-info btn_bottom_center"><a href="{% url 'latest_places' %}"> known more  </a></button>
+        <a href="{% url 'latest_places' %}"> <button class="btn_icon btn_red  btn_red_white btn_bottom_center"><i class="fa fa-plus" aria-hidden="true"></i> </button></a>
     </div>
      <div class="col-md-4 clear">
         <div class="popular contrast"  style="background-image: url('{% static "images/dust.png"%}')">
@@ -36,10 +36,10 @@
                     <span class="subtitle"> {{ popular.title }} | </span>
                     <span class="text"> {{ popular.country }} | </span>
                     <span class="text"> {{ popular.city }}</span>
-                    <a href="{% url 'museum_detail' popular.id %}"> + </a>
+                    <a href="{% url 'museum_detail' popular.id %}"> <i class="red fa fa-plus" aria-hidden="true"></i> </a>
                 </div>
             {% endfor %}
-            <p><button class="btn btn-info btn_bottom_center"><a href="{% url 'most_viewed' %}"> See more </a></button></p>
+            <a href="{% url 'most_viewed' %}"><p><button class="btn_icon btn_red  btn_red_white btn_bottom_center"> <i class="fa fa-plus" aria-hidden="true"></i>  </button></p></a>
         </div>
      </div>
  </div>

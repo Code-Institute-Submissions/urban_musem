@@ -34,16 +34,17 @@
 <header>
 
 {#    _________#}
-<div style="z-index: 100000000000000">
+<div id="top" style="z-index: 100000000000000">
     <div class="overlay overlay-hugeinc">
         <button type="button" class="overlay-close">Close</button>
         <nav>
         <ul>
             {% if user.is_authenticated %}
             <li class="hideit"><a href="{% url 'get_discover' %}">Discover</a></li>
-            <li class="hideit"><a href="{% url 'add_musuem' %}">Add museum</a></li>
+            <li class="hideit"><a href="{% url 'add_musuem' %}">New museum</a></li>
             <li class="hideit"><a href="{% url 'my_museums' %}">My museums</a></li>
             <li class="hideit"><a href="{% url 'donations' %}"> Support us </a></li>
+            <li class="hideit"><a href="{% url 'profile' %}"> Profile </a></li>
             <li class="hideit"><a href="{% url 'log_out' %}">Log out</a></li>
             {% else %}
             <li class="hideit"><a href="{% url 'log_in' %}">Log in</a></li>
@@ -64,10 +65,10 @@
                                     </h1>
                                 </a>
                                 {% if messages %}
-                                    <div class="alert alert-success">
-                                        <div class="messages">
+                                    <div class="messages_container">
+                                        <div class="messages subtitle contrast">
                                          {% for message in messages %}
-                                            {{ message }}
+                                            <p class="title">{{ message }}</p>
                                         {% endfor %}
                                         </div>
                                     </div>

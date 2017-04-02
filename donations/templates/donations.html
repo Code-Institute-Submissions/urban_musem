@@ -15,7 +15,7 @@
                 <p class="text"> <strong>{{ donation.title }}</strong> </p>
                 <p class="text"> {{ donation.description }}  </p>
                 <p class="text"> <strong> {{ donation.price }} eurs </strong> </p>
-                <h2> <button type="submit" class="btn btn-info"><a href="{% url 'support_us' donation.id %}"> Support us </a></button></h2>
+                <h2 class="container_center_icons"> <button type="submit" class="btn_text btn_red btn_red_white"><a class=" white" href="{% url 'support_us' donation.id %}"> Support us </a></button></h2>
             {% endfor %}
 
         </div>

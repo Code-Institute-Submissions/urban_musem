@@ -9,12 +9,12 @@
             </div>
         </div>
         <div class="col-md-7 right_containter">
-            <button onclick="javascript:history.back()" type="submit" class="btn btn-info button_top_right"> Back </button></a>
+            <button onclick="javascript:history.back()" type="submit" class="btn_icon btn_red btn_red_white button_top_right">  <i class="fa fa-arrow-left" aria-hidden="true"></i>  </button></a>
             <form class="form_add" method="POST">
                 {% load bootstrap_tags %}
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
-                <button type="submit" class="btn btn-info"> Add </button>
+                <button type="submit" class="btn_icon btn_red  btn_red_white"> <i class="fa fa-plus" aria-hidden="true"></i> </button>
             </form>
         </div>
     </div>

@@ -1,28 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
- <div class="container container_main">
+
+     <div class="container container_main">
 
     <div id="heading_gallery">
-        <h1 class="title heading_centered" > {{ user.username }} museums </h1>
+        <h1 class="title heading_centered animation-box wow bounceIn animated" > {{ user.username }} Museums </h1>
     </div>
     <div class="project-wrapper">
+        <button onclick="javascript:history.back()" type="submit" class="btn_icon btn_red btn_red_white button_top_right"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </button></a>
         {% for museum in user_museums %}
-            <div class="col-md-4 container_museums">
-                <figure class="mix work-item piece_in_museum ">
-					<p class="subtitle"> {{ museum.title }}</p>
-					<p class="subtitle"> {{ museum.city }}</p>
-					<p class="subtitle"> {{ museum.country }}</p>
-					<figcaption class="overlay">
-						<a class="fancybox" rel="works"  href="{% url 'museum_detail' museum.id %}"><i class="fa fa-eye fa-lg"></i></a>
-						<h4>{{ museum.title }}</h4>
-						<p>{{ museum.created_date }} </p>
-						<p>{{ museum.description }}</p>
-                        <a href="{% url 'museum_detail' museum.id %}"> See details</a>
-					</figcaption>
-				</figure>
+        <div  id="team">
+            <div class="col-md-4 clear wow animated fadeInLeft piece_in_museum container_museums">
+                <div class="container_info_museum">
+                    <p class="title museum"> {{ museum.title }}</p>
+                    <hr>
+                    <p class="subtitle clear"> {{ museum.city }}</p>
+                    <br>
+                    <p class="subtitle"> {{ museum.country }}</p>
+                </div>
+                <div class="img-hover">
+                    <p class=" text wow animated fadeInLeft">{{ museum.created_date }} </p>
+                    <p class=" text wow animated fadeInLeft">{{ museum.description }} </p>
+                    <a href="{% url 'museum_detail' museum.id %}"> <button class="btn_icon btn_red btn_red_white half"> <i class="fa fa-plus half" aria-hidden="true"></i></button> </a>
+
+                </div>
             </div>
+        </div>
         {% endfor %}
     </div>
  </div>
+
 {% endblock %}

@@ -43,22 +43,24 @@ def get_result(request):
     title_list = Museum.objects.filter(title__contains=keyword)
     place_list = list(chain(country_list, city_list, title_list))
     place_list = list(set(place_list))
+    place_list_limited = paginator(request, place_list, 5)
 
     #search for Users(show one format of result: list of museums
 
     username_list = User.objects.filter(username__icontains=keyword)
     username_list = list(chain(username_list))
-    args = {'results_place': place_list, 'results_username':username_list}
+    username_list_limited = paginator(request, username_list, 5)
+    args = {'results_place': place_list_limited, 'results_username':username_list_limited}
     return render(request, 'result_discover.html', args)
 
 def latest_places(request):
     latest_places = Museum.objects.all().order_by('-created_date')
-    latest_places_limited = paginator(request, latest_places, 6)
+    latest_places_limited = paginator(request, latest_places, 5)
     return render(request, 'latest_places.html', {'latest_places': latest_places_limited})
 
 def most_viewed(request):
-    most_viewed = Museum.objects.all().order_by('views')
-    most_viewed_limited = paginator(request, most_viewed, 10)
+    most_viewed = Museum.objects.all().order_by('-views')
+    most_viewed_limited = paginator(request, most_viewed, 5)
     return render(request, 'most_viewed.html', {'most_viewed': most_viewed_limited})
 
 

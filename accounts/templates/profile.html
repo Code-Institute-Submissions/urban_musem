@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 
 {% block content %}
     <div class="container container_main">
@@ -9,12 +10,12 @@
             </div>
         </div>
         <div class="col-md-7 right_containter">
-            <img class="profile_pic" src=" {{ MEDIA_URL }}images/home.jpg" width="150px" height="150px" alt="">
+            <img class="profile_pic" src="{{ MEDIA_URL }}images/coffee.jpg" width="150px" height="150px" alt="">
             <p class="text"> <strong> Email: </strong> {{ user.email }} </p>
             <p class="text"> <strong> Password: </strong>  </p>
             <p class="text"> <strong> Number of museums: </strong> </p>
             <p class="text"> <strong> Rating </strong>  </p>
-            <h2> <button type="submit" class="btn btn-info"><a class="confirm-delete" href="{% url 'remove_account' user.id %}"> Unsuscribe </a></button></h2>
+            <h2 class="container_center_icons"> <button type="submit" class="btn_text btn_red btn_red_white"><a class=" white confirm-delete" href="{% url 'remove_account' user.id %}"> Unsuscribe </a></button></h2>
         </div>
     </div>
 {% endblock %}

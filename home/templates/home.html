@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 {% block content %}
-    <div>
-        <img src="{{ MEDIA_URL }}images/home.jpg" width="100%">
+    <div class="home" style="background-image: url('{% static "images/home.jpg"%}')">
+        <p class="title"> Discover <br>  and share the art </p>
+        <div id="container_buttons_home">
+         <a class=" white" href="{% url 'register'  %}"><button type="submit" class="btn_text btn_red btn_red_white"> Get started</button></a>
+         <a class="red" href="{% url 'log_in' %}"><button type="submit" class="btn_text btn_white"> Login </button></a>
+        </div>
     </div>
 {% endblock %}
