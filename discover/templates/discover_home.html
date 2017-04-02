@@ -1,35 +1,46 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
-
+{% load static from staticfiles %}
 {% block content %}
  <div class="container container_main">
 
     <div id="heading_gallery">
         <h1 class="title heading_centered" > Discover </h1>
-        <p class="subtitle"> Discover by place </p>
     </div>
-    <div>
+    <div class="col-md-12 clear">
          <form class="form_user" role="form" method="post" action="{% url 'get_result' %}" >
+             <p class="subtitle"> Discover by place </p>
                 {% csrf_token %}
              <input type="text" class="form-control" name="searchy" placeholder="Search by place, user or museum...">
              <div class="form-group">
                  <h2> <button type="submit" class="btn btn-info"> Search <i class="fa fa-search"></i>  </button></h2>
              </div>
+             <hr>
          </form>
     </div>
-    <div>
-        <p class="subtitle"> Latest places </p>
+    <div class="col-md-8 latest clear">
+        <p class="subtitle "> Latest places </p>
         {% for place in latest_places %}
-            {{ place.title }}
+            <div class="col-md-10 latest_museums ">
+                <p class="text clear "><span class="subtitle ">{{ place.city }}</span> |{{ place.country }} | {{ place.title }} <a href="{% url 'museum_detail' place.id %}"> + </a></p>
+
+            </div>
         {% endfor %}
-        <a href="{% url 'latest_places' %}"> known more  </a>
+        <button class="btn btn-info btn_bottom_center"><a href="{% url 'latest_places' %}"> known more  </a></button>
     </div>
-     <div>
-        <p class="subtitle"> Most popular </p>
-        {% for popular in most_viewed %}
-            {{ popular.title }}
-        {% endfor %}
-         <a href="{% url 'most_viewed' %}"> See more </a>
+     <div class="col-md-4 clear">
+        <div class="popular contrast"  style="background-image: url('{% static "images/dust.png"%}')">
+            <p class="subtitle contrast"> Most popular </p>
+            {% for popular in most_viewed %}
+                <div class="col-md-12 viewed">
+                    <span class="subtitle"> {{ popular.title }} | </span>
+                    <span class="text"> {{ popular.country }} | </span>
+                    <span class="text"> {{ popular.city }}</span>
+                    <a href="{% url 'museum_detail' popular.id %}"> + </a>
+                </div>
+            {% endfor %}
+            <p><button class="btn btn-info btn_bottom_center"><a href="{% url 'most_viewed' %}"> See more </a></button></p>
+        </div>
      </div>
  </div>
 {% endblock %}

@@ -1,19 +1,41 @@
+@media (min-width: 768px) and (max-width: 2000px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
 /* GENERAL */
 
-
-#header{
-    background-color: white;
+.clear{
+    margin: 0;
+    padding: 0;
+    line-height: 0;
 }
 
+
 body{
-    background-color: #F6F6F6;
+    background-color: #f6f6f6;
 }
 
 .container_main{
     padding-top: 100px;
 }
 
+header{
+    z-index:9000000000;
+}
 
+hr{
+    margin: 10px 0px;
+}
 .title{
     font-family: 'Open Sans', sans-serif;
     color: #FB5353;
@@ -27,7 +49,7 @@ body{
     color: #404040;
     font-size: 25px;
     font-weight:800;
-    line-height: 53px;
+    line-height: 25px;
 }
 
 .text{
@@ -64,12 +86,54 @@ a{
     color: pink;
 }
 
+
 /* GENERAL */
 
+/* navbar */
+
+.navbar-fixed-top{
+    background:transparent;
+
+}
+
+.navbar-header{
+    padding-top: 30px;
+}
+
+.navbar-nav a{
+    color: white;
+    font-size: 16px;
+    display: block;
+}
 
 #logo{
     color: white;
 }
+
+.navbar-toggle i{
+    color:#FB5353;
+    font-size: 40px;
+}
+
+
+#fondo_collapse_in{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #404040;
+    z-index: 1000;
+    opacity: 0.7;
+    display: none;
+}
+
+.show{
+    display: block!important;
+}
+
+/* navbar */
+
+
+
 
 
 
@@ -79,6 +143,7 @@ a{
 .right_containter{
     background-color: white;
     height: 500px;
+    position: relative;
 
         /*flebox*/
     display: -ms-flexbox;
@@ -229,7 +294,7 @@ a{
 
 .heading_centered{
     text-align: center;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 #add_piece_to_gallery{
@@ -245,14 +310,141 @@ a{
     width: 100%;
 }
 
-/* STYLE FOR: Museum detail */
+/* STYLE FOR: My museum */
 
+.head_museum{
+    margin-left: 50px;
+}
 
 .container_museums{
     background-color: white;
     height: 200px;
+    margin: 10px;
 }
 
 figcaption{
-    height: 400px;
+    height: 100%;
+}
+
+.fancybox{
+    margin-top: 10px;
+}
+
+.container_info_museum{
+    text-align: center;
+    border: 3px solid #404040 ;
+    margin: 10px ;
+    height: 90%;
+}
+
+.museum{
+    transform: scale(0.5,0.5);
+}
+
+
+/* STYLE FOR: My museum */
+
+/* STYLE FOR: Adding content form */
+
+.form_add{
+    text-align: center;
+}
+
+.form_add label{
+    font-family: 'Open Sans', sans-serif;
+    color: #404040;
+    font-size: 16px;
+    font-weight:800;
+    line-height: 53px;
+}
+
+.button_top_right{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* STYLE FOR: Adding content form */
+
+/* STYLE FOR: piece detail */
+
+.right_piece{
+    padding:0;
+}
+
+.right_piece img{
+    width: 100%;
+}
+
+.left_piece{
+    padding-top: 100px;
+}
+
+.left_piece div{
+    background-color: white;
+}
+
+
+/* STYLE FOR: piece detail */
+
+/* STYLE FOR: Discover home */
+
+.latest{
+    background-color: white;
+    padding: 0;
+    height: 600px;
+    text-align: center;
+    padding: 20px;
+}
+
+.btn_bottom_center{
+    position: absolute;
+    bottom:20px;
+    right: 50px;
+    display: block;
+    margin: 0 auto;
+}
+
+.popular {
+    height: 600px;
+    text-align: center;
+    padding: 20px;
+
+}
+
+input{
+    margin-top:10px;
+}
+
+.latest_museums{
+    border-bottom: 1px solid #404040;
+    height: 70px;
+}
+
+.latest_museums p{
+    display: inline;
+}
+
+.viewed{
+    background-color: white;
+    height: 55px;
+    margin-top: 10px;
+    padding-top: 10px;
+
+}
+
+.viewed span{
+    font-size: 20px;
+}
+
+/* STYLE FOR: Discover home */
+
+/* STYLE FOR: Discover results */
+.search_results_container{
+    padding-top: 50px;
+}
+
+
+.half{
+    transform: translate(0.5,0.5);
 }

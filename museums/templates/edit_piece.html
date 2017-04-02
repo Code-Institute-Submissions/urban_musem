@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-   <div class="container">
-        <h2> Edit piece </h2>
-        <form method="POST">
-            {% load bootstrap_tags %}
-            {% csrf_token %}
-            {{ form | as_bootstrap }}
-            <button type="submit" class="btn btn-info"> Edit </button>
-        </form>
-       <h2> <button type="submit" class="btn btn-info"><a href="{% url 'pieces_details' piece_edited.id %} "> Back </a></button></h2>
-
-   </div>
+    <div class="container container_main">
+        <div class="col-md-5 left_container">
+            <div class="center_cont_left">
+                <h1 class="title"> Editing your piece </h1>
+                <p class="subtitle">make changes</p>
+            </div>
+        </div>
+        <div class="col-md-7 right_containter">
+            <form method="POST">
+                {% load bootstrap_tags %}
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <button type="submit" class="btn btn-info"> Edit </button>
+            </form>
+           <h2> <button type="submit" class="btn btn-info button_top_right"><a href="{% url 'pieces_details' piece_edited.id %} "> Back </a></button></h2>
+        </div>
+    </div>
 {% endblock %}

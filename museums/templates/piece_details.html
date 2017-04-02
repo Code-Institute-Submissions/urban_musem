@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="containter">
-    <div class="col-md-7">
-        <h2> Title {{ piece.title }} </h2>
-        <h4> Date: {{ piece.date }} </h4>
-        <h4> Description: {{ piece.description }}</h4>
-        <img src="{{ MEDIA_URL }}{{ piece.image }}" width="500" height="500" alt="">
-
+    <div class="">
+        <div class="col-md-2 left_piece">
+            <div class="center_cont_left">
+                <h2 class="title museum"> {{ piece.title }} </h2>
+                <p class="subtitle museum"> {{ piece.date }} </p>
+                <p class="text "> {{ piece.description }}</p>
+                {% if user.id == museum.author_id or user.is_superuser %}
+                    <h2> <button type="submit" class="btn btn-info"><a href="{% url 'edit_piece' piece.id %}"> Edit piece </a></button></h2>
+                    <h2> <button type="submit" class="btn btn-info"><a href="{% url 'museum_detail' museum.id %}"> Back to museum </a></button></h2>
+                    <h2> <button type="submit" class="btn btn-info"><a href="{% url 'remove_piece_from_museum' piece.id %}"> Remove  piece </a></button></h2>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-10 right_piece">
+                    <img src="{{ MEDIA_URL }}{{ piece.image }}"alt="">
+        </div>
     </div>
-            {% if user.id == museum.author_id or user.is_superuser %}
-        <h2> <button type="submit" class="btn btn-info"><a href="{% url 'edit_piece' piece.id %}"> Edit piece </a></button></h2>
-        <h2> <button type="submit" class="btn btn-info"><a href="{% url 'museum_detail' museum.id %}"> Back to museum </a></button></h2>
-        <h2> <button type="submit" class="btn btn-info"><a href="{% url 'remove_piece_from_museum' piece.id %}"> Remove  piece </a></button></h2>
-            {% endif %}
-    </div>
-</div>
 {% endblock %}

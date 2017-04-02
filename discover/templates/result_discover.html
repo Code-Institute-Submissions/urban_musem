@@ -2,24 +2,29 @@
 
 {% block content %}
  <div class="container container_main">
-
-    <div id="heading_gallery">
-        <h1 class="title heading_centered" > Result </h1>
+        <div class="col-md-5 left_container">
+            <div class="center_cont_left">
+                <h1 class="title"> Search results </h1>
+                <p class="subtitle">That's what we've found, {{ user.username }}!</p>
+            </div>
+        </div>
+        <div class="col-md-7 latest">
+            <div class="search_results_container">
+                {% for place in results_place %}
+                    <p class="subtitle"> Museums </p>
+                    <hr>
+                    <p class="text"> {{ place.title }}</p>
+                    <a href="{% url 'museum_detail' place.id %}"> See details</a>
+                {% endfor %}
+            </div>
+            <div>
+                {% for username in results_username  %}
+                    <p class="subtitle"> Users </p>
+                    <hr>
+                    <p class="text">{{ username.username }}</p>
+                    <a href="{% url 'museum_user' username.id %}"> See details</a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    <div>
-        {% for place in results_place %}
-            <p> Museums </p>
-            {{ place.title }}
-            <a href="{% url 'museum_detail' place.id %}"> See details</a>
-        {% endfor %}
-    </div>
-    <div>
-        {% for username in results_username  %}
-            <p> Users </p>
-            {{ username.username }}
-            {{ username.id }}
-            <a href="{% url 'museum_user' username.id %}"> See details</a>
-        {% endfor %}
-    </div>
- </div>
 {% endblock %}

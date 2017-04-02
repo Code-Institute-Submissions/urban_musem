@@ -27,9 +27,9 @@ def paginator(request, get_discover, num_per_page):
 
 def get_discover(request):
     latest_places = Museum.objects.all().order_by('-created_date')
-    latest_places_limited = paginator(request, latest_places, 3)
-    most_viewed = Museum.objects.all().order_by('views')
-    most_viewed_limited = paginator(request, most_viewed,2)
+    latest_places_limited = paginator(request, latest_places, 6)
+    most_viewed = Museum.objects.all().order_by('-views')
+    most_viewed_limited = paginator(request, most_viewed,8)
     args = {'latest_places': latest_places_limited, 'most_viewed': most_viewed_limited}
     return render (request, 'discover_home.html', args)
 
@@ -53,12 +53,12 @@ def get_result(request):
 
 def latest_places(request):
     latest_places = Museum.objects.all().order_by('-created_date')
-    latest_places_limited = paginator(request, latest_places, 5)
+    latest_places_limited = paginator(request, latest_places, 6)
     return render(request, 'latest_places.html', {'latest_places': latest_places_limited})
 
 def most_viewed(request):
     most_viewed = Museum.objects.all().order_by('views')
-    most_viewed_limited = paginator(request, most_viewed, 2)
+    most_viewed_limited = paginator(request, most_viewed, 10)
     return render(request, 'most_viewed.html', {'most_viewed': most_viewed_limited})
 
 

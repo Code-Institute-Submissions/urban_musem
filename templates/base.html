@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Urban museum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!-- CSS
 		================================================== -->
@@ -49,14 +51,12 @@
 
 
     <!-- Stripe -->
-		<!-- Twitter Bootstrap -->
-    <script src="{%  static 'brandi/js/bootstrap.min.js' %}"></script>
-        <!-- Main jQuery -->
-        <script src="{%  static 'brandi/js/jquery-1.11.1.min.js' %}"></script>
+
     {% block head_js %}{% endblock %}
 </head>
-<body>
-    <header class=" navbar-fixed-top navbar" style="background-color: rgba(16, 22, 54, 0.2);" id="header" >
+<body >
+    <div id="fondo_collapse_in" class=""></div>
+    <header class=" navbar-fixed-top navbar"  id="header" >
         <div class="container">
             <div class="navbar-header">
                 <!-- responsive nav button -->
@@ -67,12 +67,12 @@
                 <!-- logo -->
                 <a class="navbar-brand" href="{% url 'home' %}">
                     <h1 id="logo">
-                        URBAN MUSEUM
+                        <img src="{{ MEDIA_URL }}images/logo.png" width="300px" alt="">
                     </h1>
                 </a>
                 <!-- /logo -->
             </div>
-            <div class="collapse navbar-collapse navbar-right" role="navigation">
+            <div id="dinamic_nav" class="collapse navbar-collapse navbar-right" role="navigation">
     	    <!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav">
@@ -84,15 +84,15 @@
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav">
                         {% if user.is_authenticated %}
-                        <li class="current"><a href="{% url 'get_discover' %}">Discover</a></li>
-                        <li><a href="{% url 'add_musuem' %}"> New museum </a></li>
-                        <li><a href="{% url 'my_museums' %}"> My museums </a></li>
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                        <li class="current"><a href="{% url 'donations' %}"> Support us </a></li>
-                        <li><a href="{% url 'log_out' %}">Log out</a></li>
+                        <li class="current subtitle"><a href="{% url 'get_discover' %}">Discover</a></li>
+                        <li><a class="subtitle" href="{% url 'add_musuem' %}"> New museum </a></li>
+                        <li><a class="subtitle" href="{% url 'my_museums' %}"> My museums </a></li>
+                        <li><a class="subtitle" href="{% url 'profile' %}">Profile</a></li>
+                        <li class="subtitle" class="current"><a href="{% url 'donations' %}"> Support us </a></li>
+                        <li class="subtitle"><a href="{% url 'log_out' %}">Log out</a></li>
                         {% else %}
-                        <li><a href="{% url 'log_in' %}?next={% url 'profile' %}">Log in</a></li>
-                        <li><a href="{% url 'register' %}">Register</a></li>
+                        <li class="subtitle"><a href="{% url 'log_in' %}">Log in</a></li>
+                        <li class="subtitle"><a href="{% url 'register' %}">Register</a></li>
                         {% endif %}
                     </ul>
                 </nav>
@@ -157,13 +157,11 @@
         </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyoxLo6W65s7TXZ-9Igd1-j16P_czQp0k
         &callback=initMap" type="text/javascript"></script>
-
-		<!-- Essential jQuery Plugins
-		================================================== -->
-
+               <script src="{%  static 'brandi/js/jquery-1.11.1.min.js' %}"></script>
 		<!-- Single Page Nav -->
         <script src="{%  static 'brandi/js/jquery.singlePageNav.min.js' %}"></script>
-
+		<!-- Twitter Bootstrap -->
+        <script src="{%  static 'brandi/js/bootstrap.min.js' %}"></script>
 		<!-- jquery.fancybox.pack -->
         <script src="{%  static 'brandi/js/jquery.fancybox.pack.js' %}"></script>
 		<!-- jquery.mixitup.min -->
@@ -174,9 +172,6 @@
         <script src="{%  static 'brandi/js/jquery-countTo.js' %}"></script>
 		<!-- jquery.appear -->
         <script src="{%  static 'brandi/js/jquery.appear.js' %}"></script>
-		<!-- Contact form validation -->
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
 
 		<!-- jquery easing -->
         <script src="{%  static 'brandi/js/jquery.easing.min.js' %}"></script>
@@ -199,61 +194,6 @@
 		</script>
 		<!-- Custom Functions -->
         <script src="{%  static 'brandi/js/custom.js' %}"></script>
-		<script type="text/javascript">
-			$(function(){
-				/* ========================================================================= */
-				/*	Contact Form
-				/* ========================================================================= */
 
-				$('#contact-form').validate({
-					rules: {
-						name: {
-							required: true,
-							minlength: 2
-						},
-						email: {
-							required: true,
-							email: true
-						},
-						message: {
-							required: true
-						}
-					},
-					messages: {
-						name: {
-							required: "come on, you have a name don't you?",
-							minlength: "your name must consist of at least 2 characters"
-						},
-						email: {
-							required: "no email, no message"
-						},
-						message: {
-							required: "um...yea, you have to write something to send this form.",
-							minlength: "thats all? really?"
-						}
-					},
-					submitHandler: function(form) {
-						$(form).ajaxSubmit({
-							type:"POST",
-							data: $(form).serialize(),
-							url:"process.php",
-							success: function() {
-								$('#contact-form :input').attr('disabled', 'disabled');
-								$('#contact-form').fadeTo( "slow", 0.15, function() {
-									$(this).find(':input').attr('disabled', 'disabled');
-									$(this).find('label').css('cursor','default');
-									$('#success').fadeIn();
-								});
-							},
-							error: function() {
-								$('#contact-form').fadeTo( "slow", 0.15, function() {
-									$('#error').fadeIn();
-								});
-							}
-						});
-					}
-				});
-			});
-		</script>
 </body>
 </html>

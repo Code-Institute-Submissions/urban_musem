@@ -29,6 +29,7 @@ from .settings import MEDIA_ROOT
 urlpatterns = [
     url(r'^support_us/', include(payments_urls)),
     url(r'^accounts/', include(accounts_urls)),
+    url(r'user/', include(accounts_urls)),
     url(r'^donations/', include(donations_urls)),
     url(r'^museums/', include(museums_urls)),
     url(r'^discover/', include(discover_urls)),

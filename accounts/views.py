@@ -16,7 +16,7 @@ def log_out(request):
     messages.success(request, 'You have successfully logged out')
     return redirect(reverse('home'))
 
-@login_required(login_url='/accounts/log_in')
+@login_required(login_url='/log_in')
 def profile(request):
     return render(request, 'profile.html')
 
@@ -34,7 +34,7 @@ def log_in(request):
                     next = request.GET['next']
                     return HttpResponseRedirect(next)
                 else:
-                    return redirect(reverse('profile'))
+                    return redirect(reverse('get_discover'))
             else:
                 form.add_error(None, 'Your username os password was not recognised')
     else:
@@ -55,7 +55,7 @@ def register(request):
             if user:
                 auth.login(request, user)
                 messages.success(request, 'You have succesfully registered')
-                return redirect(reverse('profile'))
+                return redirect(reverse('get_discover'))
             else:
                 messages.error(request, 'Unable to log you in at this time')
     else:

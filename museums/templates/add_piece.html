@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-   <div class="container">
-        <h2> New piece </h2>
-        <form method="POST" enctype="multipart/form-data">
-            {% load bootstrap_tags %}
-            {% csrf_token %}
-            {{ form | as_bootstrap }}
-            <button type="submit" class="btn btn-info"> Add </button>
-        </form>
-   </div>
+    <div class="container container_main">
+        <div class="col-md-5 left_container">
+            <div class="center_cont_left">
+                <h1 class="title"> Adding a piece </h1>
+                <p class="subtitle">Feed your museum</p>
+            </div>
+        </div>
+        <div class="col-md-7 right_containter">
+            <button onclick="javascript:history.back()" type="submit" class="btn btn-info button_top_right"> Back </button></a>
+            <form class="form_add" method="POST" enctype="multipart/form-data">
+                {% load bootstrap_tags %}
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <button type="submit" class="btn btn-info"> Add </button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

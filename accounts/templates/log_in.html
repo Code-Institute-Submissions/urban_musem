@@ -3,11 +3,16 @@
 {% block content %}
     <div class="container container_main container_main_center">
         <div class="col-md-6 center_container">
-            <form class="form_user" role="form" method="post" action="{% url 'log_in' %}?next={% url 'profile' %}">
+            {% if next %}
+                <form role="form" method="post" action="{% url 'log_in' %}?next={{ next }}">
+            {% else %}
+               <form role="form" method="post" action="{% url 'log_in' %}">
+            {% endif %}
                 <legend class="title">Login</legend>
                 <p class="subtitle"> Nice to see you again!</p>
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
+                <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
                 <div class="form-group">
                     <h2> <button type="submit" class="btn btn-info">Login</button></h2>
                 </div>
