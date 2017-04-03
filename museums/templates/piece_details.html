@@ -7,9 +7,9 @@
                 <p class="subtitle museum"> {{ piece.date }} </p>
                 <p class="text "> {{ piece.description }}</p>
                 {% if user.id == museum.author_id or user.is_superuser %}
-                    <a href="{% url 'edit_piece' piece.id %}"><h2 class="container_center_icons"> <button type="submit" class="icon_no_margin btn_icon btn_red  btn_red_white clear"> <i class="fa fa-pencil" aria-hidden="true"></i></button></h2> </a>
-                    <a href="{% url 'museum_detail' museum.id %}"> <h2 class="container_center_icons"> <button type="submit" class="icon_no_margin btn_icon btn_red  btn_red_white clear "><i class="fa fa-arrow-left" aria-hidden="true"></i></button></h2> </a>
-                    <a class="confirm-delete contrast" href="{% url 'remove_piece_from_museum' piece.id %}"><h2 class="container_center_icons"> <button type="submit" class="icon_no_margin btn_icon btn_red  btn_red_white clear"> <i class="fa fa-trash" aria-hidden="true"></i></button></h2> </a>
+                    <a href="{% url 'edit_piece' piece.id %}"><h2 class="container_center_icons piece_detail_btn_responsive"> <button type="submit" class="icon_no_margin btn_icon btn_red  btn_red_white clear"> <i class="fa fa-pencil" aria-hidden="true"></i></button></h2> </a>
+                    <a href="{% url 'museum_detail' museum.id %}"> <h2 class="container_center_icons piece_detail_btn_responsive"> <button type="submit" class="icon_no_margin btn_icon btn_red  btn_red_white clear "><i class="fa fa-arrow-left" aria-hidden="true"></i></button></h2> </a>
+                    <a class="confirm-delete contrast" href="{% url 'remove_piece_from_museum' piece.id %}"><h2 class="container_center_icons piece_detail_btn_responsive"> <button type="submit" class="icon_no_margin btn_icon btn_red  btn_red_white clear"> <i class="fa fa-trash" aria-hidden="true"></i></button></h2> </a>
                 {% endif %}
             </div>
         </div>

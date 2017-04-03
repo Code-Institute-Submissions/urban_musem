@@ -6,7 +6,7 @@
             <h2 class="title head_museum"> {{ museum.title }} </h2>
             <h4 class="subtitle contrast head_museum"> {{ museum.description }} </h4>
         </div>
-        <div class="col-md-5 ">
+        <div id="margin_for_responsive" class="col-md-5 ">
             <span class="text contrast"> {{ museum.city }} | </span>
             <span class="text contrast"> {{ museum.country }} |</span>
             <span class="text contrast"> {{ museum.created_date }} </span>
@@ -27,7 +27,7 @@
          <a href="{% url 'add_piece_to_museum' museum.id %}"><button type="submit" class="btn_icon btn_red button_top_right btn_red_white"> <i class="fa fa-plus" aria-hidden="true"></i></button> </a>
         {% endif %}
     </div>
-    <div class="project-wrapper">
+    <div id="wrapper_for_responsive" class="project-wrapper">
         {% for piece in pieces %}
             <div id="team">
                 <div class="col-md-4 clear wow animated fadeInLeft ">
