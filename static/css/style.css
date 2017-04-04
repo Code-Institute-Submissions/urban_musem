@@ -31,9 +31,14 @@
         font-size: 20px!important;
     }
     /*nav*/
+
+    #header{
+        width: 100%;
+    }
+
     #trigger-overlay{
         margin-top: 15px;
-        margin-left:30px;
+        margin-left:60px;
     }
 
     .overlay {
@@ -147,15 +152,14 @@ body{
     background-color: #f6f6f6;
     height: 100%;
     width: 100%;
+
 }
 
 .container_main{
     padding-top: 150px;
+    z-index: 100000!important;
 }
 
-header{
-    z-index:9000000000;
-}
 
 hr{
     margin: 10px 0px;
@@ -169,6 +173,10 @@ h2{
     margin: 5px;
     letter-spacing: 3px;
 
+}
+
+a{
+    color: #404040;
 }
 
 .title{
@@ -307,7 +315,6 @@ h2{
     background-repeat: no-repeat;
     background-position:bottom;
     position: relative;
-    z-index: -1000000;
 }
 
 .home p{
@@ -326,7 +333,8 @@ h2{
     position: absolute;
     bottom: 150px;
     right: 50px;
-    z-index: 100000000000;
+        z-index:9000000!important;
+
 }
 
 /*home*/
@@ -345,12 +353,10 @@ h2{
     background: transparent;
     position: fixed;
 
-
 }
 
 
 .fixed{
-    z-index: 1000000000000;
     background: transparent;
 }
 
@@ -411,8 +417,11 @@ h2{
 
 /* navbar */
 
+/*order elements*/
 
-
+.top-bar{
+    z-index: 10000000!important;
+}
 
 
 
@@ -542,12 +551,11 @@ h2{
 }
 
 
-#team img{
-    width: 100%;
-    margin:0;
+#img_piece{
+    margin: 0;
+    height: 300px!important;
+    width: 100%!important;
 }
-
-
 /*subtitle*/
 
 #heading_gallery{
@@ -682,10 +690,17 @@ input{
     border-bottom: 1px solid #404040;
     height: 60px;
     padding-top: 15px;
+    margin-left: 40px;
 }
 
 .latest_museums p{
     display: inline;
+}
+
+
+.latest_museums p:hover{
+    color: #FB5353;
+    transition: 0.1s;
 }
 
 .viewed{
@@ -694,6 +709,11 @@ input{
     margin-top: 10px;
     padding-top: 10px;
 
+}
+
+.viewed .text:hover{
+    color: #FB5353;
+    transition: 0.1s;
 }
 
 .viewed span{
@@ -723,6 +743,12 @@ input{
     transform: translate(0.5,0.5);
 }
 
+.search_results_container .text:hover{
+      color: #FB5353;
+    transition: 0.1s;
+
+}
+
 /* STYLE FOR: Discover results */
 
 
@@ -737,6 +763,12 @@ input{
 
 .latest_places p{
     padding-left: 0!important;
+}
+
+#description_p:hover{
+    color:  #FB5353;
+    transition: 0.1s;
+
 }
 
 /* STYLE FOR: Discover latest places */

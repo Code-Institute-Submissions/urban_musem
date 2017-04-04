@@ -13,8 +13,8 @@
             <a href="{% url 'get_discover' %}"><button type="submit" class="btn_icon btn_red btn_red_white button_top_right"><i class="fa fa-arrow-left" aria-hidden="true"></i> </button></a>
             {% for place in latest_places %}
                 <div class="col-md-10 latest_places ">
-                 <p class="text clear "><span class="subtitle ">{{ place.city }}</span> ,{{ place.country }} | {{ place.title }}
-                     <span class="redsmall">{{ place.created_date }}</span> <br> {{ place.description }} <a href="{% url 'museum_detail' place.id %}"> <i class="red fa fa-plus" aria-hidden="true"></i> </a></p>
+                 <a href="{% url 'museum_detail' place.id %}"><p class="text clear "><span class="subtitle ">{{ place.city }}</span> ,{{ place.country }} | {{ place.title }}
+                     <span class="redsmall">{{ place.created_date }}</span> <br> <p id="description_p">{{ place.description }}</p> </a>
                 </div>
         {% endfor %}
         {% if latest_places.number == 1 and latest_places.paginator.num_pages == 1 %}

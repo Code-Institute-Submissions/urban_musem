@@ -13,8 +13,9 @@
             <a href="{% url 'get_discover' %}"><button type="submit" class="btn_icon btn_red btn_red_white button_top_right"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </button></a>
                 {% for popular in most_viewed %}
                 <div class="col-md-10 latest_places ">
+                 <a href="{% url 'museum_detail' popular.id %}">
                  <p class="text clear "><span class="subtitle ">{{ popular.city }}</span> ,{{ popular.country }} | {{ popular.title }}
-                     <span class="redsmall">{{ popular.views }} Views </span> <br> {{ popular.description }} <a href="{% url 'museum_detail' popular.id %}"><i class="red fa fa-plus" aria-hidden="true"></i> </a></p>
+                     <span class="redsmall">{{ popular.views }} Views </span> <br> <p id="description_p">{{ popular.description }} </p></a>
                 </div>
             {% endfor %}
         {% if most_viewed.number == 1 and most_viewed.paginator.num_pages == 1 %}

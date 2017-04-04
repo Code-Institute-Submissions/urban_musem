@@ -14,8 +14,7 @@
                 {% for place in results_place %}
                     <hr>
                     <p class="subtitle"> Museum </p>
-                    <p class="text"> {{ place.title }}</p>
-                    <a href="{% url 'museum_detail' place.id %}"> <i class="red fa fa-plus" aria-hidden="true"></i></a>
+                    <a href="{% url 'museum_detail' place.id %}"><p class=" text"> {{ place.title }}</p></a>
                 {% endfor %}
          {% if place.number == 1 and place.paginator.num_pages == 1 %}
 
@@ -24,7 +23,7 @@
                 <span class="step-links">
 
                     {% if place.has_previous %}
-                        <a href="?page={{ place.previous_page_number }}" > <i class="red fa fa-chevron-left" aria-hidden="true"></i> </a>
+                        <a href="?page={{ place.previous_page_number }}" > <i class=" fa fa-chevron-left" aria-hidden="true"></i> </a>
                     {% endif %}
 
 
@@ -37,12 +36,11 @@
          {% endif %}
 
             </div>
-            <div>
+            <div class="search_results_container">
                 {% for username in results_username  %}
                     <hr>
                     <p class="subtitle"> User </p>
-                    <p class="text">{{ username.username }}</p>
-                    <a href="{% url 'museum_user' username.id %}">  <i class="red fa fa-plus" aria-hidden="true"></i> </a>
+                    <a href="{% url 'museum_user' username.id %}"><p class=" text">{{ username.username }}</p> </a>
                 {% endfor %}
           {% if username.number == 1 and username.paginator.num_pages == 1 %}
 

@@ -22,7 +22,7 @@
         <p class="subtitle red"> Latest places </p>
         {% for place in latest_places %}
             <div class="col-md-10 latest_museums ">
-                <p class="text clear "><span class=" subtitle ">{{ place.city }}</span> |{{ place.country }} | {{ place.title }} <a href="{% url 'museum_detail' place.id %}"> <i class="red fa fa-plus" aria-hidden="true"></i> </a></p>
+                 <a href="{% url 'museum_detail' place.id %}"><p class="text clear "><span class=" subtitle ">{{ place.city }}</span> |{{ place.country }} | {{ place.title }}  </p></a>
 
             </div>
         {% endfor %}
@@ -33,10 +33,10 @@
             <p class="subtitle contrast"> Most popular </p>
             {% for popular in most_viewed %}
                 <div class="col-md-12 viewed">
-                    <span class="subtitle"> {{ popular.title }} | </span>
-                    <span class="text"> {{ popular.country }} | </span>
-                    <span class="text"> {{ popular.city }}</span>
-                    <a href="{% url 'museum_detail' popular.id %}"> <i class="red fa fa-plus" aria-hidden="true"></i> </a>
+                    <a href="{% url 'museum_detail' popular.id %}">
+                        <span class="subtitle"> {{ popular.title }} | </span>
+                        <span class="text"> {{ popular.country }} | {{ popular.city }}</span>
+                    </a>
                 </div>
             {% endfor %}
             <a href="{% url 'most_viewed' %}"><p><button class="btn_icon btn_red  btn_red_white btn_bottom_center"> <i class="fa fa-plus" aria-hidden="true"></i>  </button></p></a>
